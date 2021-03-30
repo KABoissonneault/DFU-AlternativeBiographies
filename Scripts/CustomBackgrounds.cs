@@ -6,20 +6,23 @@ using DaggerfallWorkshop.Utility;
 using DaggerfallWorkshop.Game;
 using DaggerfallWorkshop.Game.Utility.ModSupport;
 
-public class CustomBackgrounds : MonoBehaviour
+namespace CustomBackgrounds
 {
-    static Mod mod;
-
-    [Invoke(StateManager.StateTypes.Start, 0)]
-    public static void Init(InitParams initParams)
+    public class CustomBackgrounds : MonoBehaviour
     {
-        mod = initParams.Mod;
-        new GameObject(initParams.ModTitle).AddComponent<CustomBackgrounds>();
-    }
+        static Mod mod;
 
-    public void Awake()
-    {
-        DaggerfallUnity.Instance.TextProvider = new BackgroundTextProvider(DaggerfallUnity.Instance.TextProvider);
-        DaggerfallUnity.Instance.MacroDataSourceFactory = new BackgroundMacroDataSourceFactory(DaggerfallUnity.Instance.MacroDataSourceFactory);
+        [Invoke(StateManager.StateTypes.Start, 0)]
+        public static void Init(InitParams initParams)
+        {
+            mod = initParams.Mod;
+            new GameObject(initParams.ModTitle).AddComponent<CustomBackgrounds>();
+        }
+
+        public void Awake()
+        {
+            DaggerfallUnity.Instance.TextProvider = new BackgroundTextProvider(DaggerfallUnity.Instance.TextProvider);
+            DaggerfallUnity.Instance.MacroDataSourceFactory = new BackgroundMacroDataSourceFactory(DaggerfallUnity.Instance.MacroDataSourceFactory);
+        }
     }
 }

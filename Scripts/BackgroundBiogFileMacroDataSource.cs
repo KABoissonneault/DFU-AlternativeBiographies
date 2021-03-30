@@ -7,118 +7,121 @@ using DaggerfallWorkshop.Game.Entity;
 using DaggerfallWorkshop.Game.Utility;
 using DaggerfallWorkshop.Utility;
 
-class BackgroundBiogFileMacroDataSource : BiogFile.BiogFileMacroDataSource
+namespace CustomBackgrounds
 {
-    public BackgroundBiogFileMacroDataSource(BiogFile biogFile)
-        : base(biogFile)
+    class BackgroundBiogFileMacroDataSource : BiogFile.BiogFileMacroDataSource
     {
-
-    }
-
-    public override bool ExpandMacro(string macroType, out string textOut)
-    {
-        Regex nameRegex = new Regex("%b([0-9]+)n");
-        Match nameMatch = nameRegex.Match(macroType);
-        if(nameMatch.Success)
+        public BackgroundBiogFileMacroDataSource(BiogFile biogFile)
+            : base(biogFile)
         {
-            textOut = GetBackgroundCharacterName(int.Parse(nameMatch.Groups[1].Value));
-            return true;
+
         }
 
-        Regex pronounRegex = new Regex("%b([0-9]+)g([0-9a-z]+)");
-        Match pronounMatch = pronounRegex.Match(macroType);
-        if(pronounMatch.Success)
+        public override bool ExpandMacro(string macroType, out string textOut)
         {
-            int characterIndex = int.Parse(pronounMatch.Groups[1].Value);
-            string pronounType = pronounMatch.Groups[2].Value;
-            switch (pronounType)
+            Regex nameRegex = new Regex("%b([0-9]+)n");
+            Match nameMatch = nameRegex.Match(macroType);
+            if (nameMatch.Success)
             {
-            case "1":
-                textOut = GetBackgroundCharacterPronoun1(characterIndex);
+                textOut = GetBackgroundCharacterName(int.Parse(nameMatch.Groups[1].Value));
                 return true;
-            case "2":
-                textOut = GetBackgroundCharacterPronoun2(characterIndex);
-                return true;
-            case "2self":
-                textOut = GetBackgroundCharacterPronoun2self(characterIndex);
-                return true;
-            case "3":
-                textOut = GetBackgroundCharacterPronoun3(characterIndex);
-                return true;
+            }
+
+            Regex pronounRegex = new Regex("%b([0-9]+)g([0-9a-z]+)");
+            Match pronounMatch = pronounRegex.Match(macroType);
+            if (pronounMatch.Success)
+            {
+                int characterIndex = int.Parse(pronounMatch.Groups[1].Value);
+                string pronounType = pronounMatch.Groups[2].Value;
+                switch (pronounType)
+                {
+                    case "1":
+                        textOut = GetBackgroundCharacterPronoun1(characterIndex);
+                        return true;
+                    case "2":
+                        textOut = GetBackgroundCharacterPronoun2(characterIndex);
+                        return true;
+                    case "2self":
+                        textOut = GetBackgroundCharacterPronoun2self(characterIndex);
+                        return true;
+                    case "3":
+                        textOut = GetBackgroundCharacterPronoun3(characterIndex);
+                        return true;
+                }
+            }
+
+            return base.ExpandMacro(macroType, out textOut);
+        }
+
+        private uint GetBackgroundCharacterSeed(int index)
+        {
+            return (uint)(parent.GetHashCode() + index);
+        }
+
+        private string GetBackgroundCharacterName(int index)
+        {
+            DFRandom.Seed = GetBackgroundCharacterSeed(index);
+            NameHelper.BankTypes nameBank = MacroHelper.GetNameBank((Races)CharacterDocument.raceTemplate.ID);
+            if (DFRandom.rand() % 2 == 0)
+            {
+                return DaggerfallUnity.Instance.NameHelper.FullName(nameBank, Genders.Male);
+            }
+            else
+            {
+                return DaggerfallUnity.Instance.NameHelper.FullName(nameBank, Genders.Female);
             }
         }
 
-        return base.ExpandMacro(macroType, out textOut);
-    }
+        private string GetBackgroundCharacterPronoun1(int index)
+        {
+            DFRandom.Seed = GetBackgroundCharacterSeed(index);
+            if (DFRandom.rand() % 2 == 0)
+            {
+                return TextManager.Instance.GetLocalizedText("pronounHe");
+            }
+            else
+            {
+                return TextManager.Instance.GetLocalizedText("pronounShe");
+            }
+        }
 
-    private uint GetBackgroundCharacterSeed(int index)
-    {
-        return (uint)(parent.GetHashCode() + index);
-    }
+        private string GetBackgroundCharacterPronoun2(int index)
+        {
+            DFRandom.Seed = GetBackgroundCharacterSeed(index);
+            if (DFRandom.rand() % 2 == 0)
+            {
+                return TextManager.Instance.GetLocalizedText("pronounHim");
+            }
+            else
+            {
+                return TextManager.Instance.GetLocalizedText("pronounHer");
+            }
+        }
 
-    private string GetBackgroundCharacterName(int index)
-    {
-        DFRandom.Seed = GetBackgroundCharacterSeed(index);
-        NameHelper.BankTypes nameBank = MacroHelper.GetNameBank((Races)CharacterDocument.raceTemplate.ID);
-        if (DFRandom.rand() % 2 == 0)
+        private string GetBackgroundCharacterPronoun2self(int index)
         {
-            return DaggerfallUnity.Instance.NameHelper.FullName(nameBank, Genders.Male);
+            DFRandom.Seed = GetBackgroundCharacterSeed(index);
+            if (DFRandom.rand() % 2 == 0)
+            {
+                return TextManager.Instance.GetLocalizedText("pronounHimself");
+            }
+            else
+            {
+                return TextManager.Instance.GetLocalizedText("pronounHerself");
+            }
         }
-        else
-        {
-            return DaggerfallUnity.Instance.NameHelper.FullName(nameBank, Genders.Female);
-        }
-    }
 
-    private string GetBackgroundCharacterPronoun1(int index)
-    {
-        DFRandom.Seed = GetBackgroundCharacterSeed(index);
-        if (DFRandom.rand() % 2 == 0)
+        private string GetBackgroundCharacterPronoun3(int index)
         {
-            return TextManager.Instance.GetLocalizedText("pronounHe");
-        }
-        else
-        {
-            return TextManager.Instance.GetLocalizedText("pronounShe");
-        }
-    }
-
-    private string GetBackgroundCharacterPronoun2(int index)
-    {
-        DFRandom.Seed = GetBackgroundCharacterSeed(index);
-        if (DFRandom.rand() % 2 == 0)
-        {
-            return TextManager.Instance.GetLocalizedText("pronounHim");
-        }
-        else
-        {
-            return TextManager.Instance.GetLocalizedText("pronounHer");
-        }
-    }
-
-    private string GetBackgroundCharacterPronoun2self(int index)
-    {
-        DFRandom.Seed = GetBackgroundCharacterSeed(index);
-        if (DFRandom.rand() % 2 == 0)
-        {
-            return TextManager.Instance.GetLocalizedText("pronounHimself");
-        }
-        else
-        {
-            return TextManager.Instance.GetLocalizedText("pronounHerself");
-        }
-    }
-
-    private string GetBackgroundCharacterPronoun3(int index)
-    {
-        DFRandom.Seed = GetBackgroundCharacterSeed(index);
-        if (DFRandom.rand() % 2 == 0)
-        {
-            return TextManager.Instance.GetLocalizedText("pronounHis");
-        }
-        else
-        {
-            return TextManager.Instance.GetLocalizedText("pronounHer");
+            DFRandom.Seed = GetBackgroundCharacterSeed(index);
+            if (DFRandom.rand() % 2 == 0)
+            {
+                return TextManager.Instance.GetLocalizedText("pronounHis");
+            }
+            else
+            {
+                return TextManager.Instance.GetLocalizedText("pronounHer");
+            }
         }
     }
 }

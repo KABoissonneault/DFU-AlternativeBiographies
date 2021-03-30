@@ -157,14 +157,19 @@ e.	Immoral assassins
 
 10.	You are intimate friends with ___.
 a.	a Monk
+	#10100
 	AF O 8 12 +1
 b.	a Mage
+	#10101
 	AF O 8 2 +1
 c.	a Rogue
+	#10102
 	AF O 8 8 +1
 d.	a Warrior
+	#10103
 	AF O 8 17 +1
 e.	an Assassin
+	#10104
 	AF O 8 11 +1
 
 11.	What god, if any, do you worship?
