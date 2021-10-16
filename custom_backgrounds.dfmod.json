@@ -3,15 +3,14 @@
     "ModVersion": "0.1",
     "ModAuthor": "Kab the Bird Ranger",
     "ContactInfo": "kaboissonneault@gmail.com",
-    "DFUnity_Version": "0.11.2",
+    "DFUnity_Version": "0.12",
     "GUID": "37709bcf-3a07-49f6-bccb-fe3f2b527658",
     "Files": [
         "Assets/Game/Mods/CustomBackgrounds/custom_backgrounds.dfmod.json",
         "Assets/Game/Mods/CustomBackgrounds/Scripts/CustomBackgrounds.cs",
         "Assets/Game/Mods/CustomBackgrounds/Scripts/BackgroundTextProvider.cs",
-        "Assets/Game/Mods/CustomBackgrounds/Scripts/BackgroundMacroDataSourceFactory.cs",
-        "Assets/Game/Mods/CustomBackgrounds/Scripts/BackgroundBiogFileMacroDataSource.cs",
         "Assets/Game/Mods/CustomBackgrounds/Scripts/Tokens/BackgroundBackstoryTokens.cs",
-        "Assets/Game/Mods/CustomBackgrounds/Scripts/Tokens/BackgroundMiscTokens.cs"
+        "Assets/Game/Mods/CustomBackgrounds/Scripts/Tokens/BackgroundMiscTokens.cs",
+        "Assets/Game/Mods/CustomBackgrounds/BIOGs/BIOG00T1.TXT"
     ]
 }

@@ -1,53 +1,82 @@
 #10000
 
-1.	What school of magic do you think rocks hardest?
-a.	Destruction
-	#4150
-	!4156
-	?4206
-	22 +6
-b.	Restoration
-	#4151
-	!4157
-	?4207
-	23 +6
-c.	Illusion
-	#4152
-	!4158
-	?4208
-	24 +6
-d.	Alteration
-	#4153
-	!4159
-	?4209
-	25 +6
-e.	Thaumaturgy
-	#4154
-	!4160
-	?4210
-	26 +6
-f.	Mysticism
-	#4155
-	!4161
-	?4211
-	27 +6
+1.	Of all disagreeable types, you have the
+	most personal hatred for ___.
+a.	Sanctimonious priests
+	#10100
+	!10101
+b.	Diabolic wizards
+	#10102
+	!10103
+c.	Stupid peasants
+	#10104
+	!10105
+d.	Power-mad robber barons
+	#10106
+	!10107
+e.	Immoral assassins
+	#10108
+	!10109
 
-2.	What makes you think you're worth going on an
+2.	What school of magic have you been
+	studying the longest?
+a.	Destruction
+	22 +6
+	#10133
+	!10134
+	?10135
+b.	Restoration
+	23 +6
+	#10136
+	!10137
+	?10138
+c.	Illusion
+	24 +6
+	#10139
+	!10140
+	?10141
+d.	Alteration
+	25 +6
+	#10142
+	!10143
+	?10144
+e.	Thaumaturgy
+	26 +6
+	#10145
+	!10146
+	?10147
+f.	Mysticism
+	27 +6
+	#10148
+	!10149
+	?10150
+
+3.	What motivates you into a life of
 	adventure?
 a.	Riches
+	#4162
+	!4263
 	GP +500
 b.	Fame
+	#4163
+	!4266
 	r4 +10
 	r2 +10
 c.	Knowledge
+	#4164
+	!4260
 	IT 7 0 0
 d.	Fun
+	#4165
+	!4265
 	1 +3
 	2 +3
 e.	Helping Others
+	#4166
+	!4261
 	r0 +10
 
-3.	In between formal procrastination, you spent your
+4.	In between formal study, you spent your
 	time ___.
 a.	socializing with aristocrats
 	1 +6
@@ -69,50 +98,66 @@ e.	swimming
 f.	sparring
 	30 +6
 
-4.	Since childhood, you have saved  ___.
+5.	Since childhood, you have saved  ___.
 a.	100 gold pieces
+	#4167
 	GP + 100
 b.	A favorite book
+	#4168
 	IT 7 0 0
 c.	A cuirass
+	#4169
 	IT 2 0 0
 d.	A pearl
+	#4191
 	IT 22 1 0
 
-5.	In gratitude for services rendered, the
+6.	In gratitude for services rendered, the
 	Emperor gave you ___.
 a.	Over 200 gold pieces
+	#4172
 	GP +250
 b.	An ebony dagger
+	#4173
 	IT 3 0 7
 c.  A book
+	#4174
 	IT 7 0 0
 d.	A ruby
+	#4175
 	IT 14 0 0
 e.	A silver staff
+	#4176
 	IT 3 2 2
 f.	A suit of armor
+	#4196
 	IT 2 0 0
 	IT 2 2 0
 	IT 2 3 0
 	IT 2 4 0
 
-6.	As you grew older, you received additional
+7.	As you grew older, you received additional
 	magical training in ___.
 a.	The School of Destruction
+	#4178
 	22 +6
 b.	The School of Restoration
+	#4179
 	23 +6
 c.	The School of Illusion
+	#4180
 	24 +6
 d.	The School of Alteration
+	#4181
 	25 +6
 e.	The School of Thaumaturgy
+	#4182
 	26 +6
 f.	The School of Mysticism
+	#4183
 	27 +6
 
-7.	As a child, your nickname was ___.
+8.	As a child, your nickname was ___.
 a.	Rabbit
 	3 +6
 b.	Guppy
@@ -124,7 +169,7 @@ d.	Scrapper
 e.	Monkey
 	18 +6
 
-8.	You are friendlier than most with ___.
+9.	You are friendlier than most with ___.
 a.	the savage Harpies
 	5 +6
 b.	the simple Giants
@@ -142,35 +187,17 @@ g.	the primitive Centaurs
 h.	the mischevious Imps
 	12 +6
 
-9.	Of all disagreeable types, you have the
-	most personal hatred for ___.
-a.	Sanctimonious priests
-	AE M 8 12 +3
-b.	Diabolic wizards
-	AE M 8 2 +4
-c.	Stupid peasants
-	AE M 8 8 +3
-d.	Power-mad robber barons
-	AE M 8 17 +4
-e.	Immoral assassins
-	AE M 8 11 +2
-
 10.	You are intimate friends with ___.
 a.	a Monk
-	#10100
-	AF O 8 12 +1
+	#10128
 b.	a Mage
-	#10101
-	AF O 8 2 +1
+	#10129
 c.	a Rogue
-	#10102
-	AF O 8 8 +1
+	#10130
 d.	a Warrior
-	#10103
-	AF O 8 17 +1
+	#10131
 e.	an Assassin
-	#10104
-	AF O 8 11 +1
+	#10132
 
 11.	What god, if any, do you worship?
 a.	None
@@ -195,14 +222,31 @@ i.	Kynareth, Goddess of Air
 12.	You have the most trouble ___.
 a.	Resisting poisons
 	RP -10
+	#10110
+	!10111
+	?10112
 b.	Staying awake and alert
 	FT -5
+	#10113
+	!10114
+	?10115
 c.	Getting along with others
 	RR -5
+	#10116
+	!10117
+	?10118
 d.	Avoiding diseases
 	RD -5
+	#10119
+	!10120
+	?10121
 e.	Resisting magic
 	MR -5
+	#10122
+	!10123
+	?10124
 f.	Fighting without magic
 	TH -5
-
+	#10125
+	!10126
+	?10127

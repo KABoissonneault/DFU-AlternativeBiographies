@@ -12,6 +12,16 @@ namespace CustomBackgrounds
 {
     public class BackgroundTextProvider : FallbackTextProvider
     {
+        public static TextFile.Token[] CreateSimpleTokens(string line)
+        {
+            return new TextFile.Token[] { new TextFile.Token(TextFile.Formatting.Text, line), new TextFile.Token(TextFile.Formatting.EndOfRecord) };
+        }
+
+        public static TextFile.Token[] CreateSimpleTokens(string[] lines)
+        {
+            return CreateFormattedTokens(TextFile.Formatting.NewLine, lines);
+        }
+
         public static TextFile.Token[] CreateFormattedTokens(TextFile.Formatting formatting, params string[] lines)
         {
             List<TextFile.Token> tokens = new List<TextFile.Token>();

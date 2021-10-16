@@ -1,8 +1,6 @@
-using System;
 using UnityEngine;
 
 using DaggerfallWorkshop;
-using DaggerfallWorkshop.Utility;
 using DaggerfallWorkshop.Game;
 using DaggerfallWorkshop.Game.Utility.ModSupport;
 
@@ -22,7 +20,6 @@ namespace CustomBackgrounds
         public void Awake()
         {
             DaggerfallUnity.Instance.TextProvider = new BackgroundTextProvider(DaggerfallUnity.Instance.TextProvider);
-            DaggerfallUnity.Instance.MacroDataSourceFactory = new BackgroundMacroDataSourceFactory(DaggerfallUnity.Instance.MacroDataSourceFactory);
         }
     }
 }
